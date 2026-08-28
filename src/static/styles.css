@@ -28,6 +28,36 @@ header h1 {
   margin-bottom: 10px;
 }
 
+#auth-container {
+  margin-top: 18px;
+}
+
+#login-form,
+#logged-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#login-form input {
+  padding: 9px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#logged-in {
+  gap: 14px;
+}
+
+#auth-message {
+  margin: 10px auto 0;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;

@@ -5,14 +5,15 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
-- Sign up for activities
+- Sign up for activities as a teacher
+- Remove student registrations as a teacher
 
 ## Getting Started
 
 1. Install the dependencies:
 
    ```
-   pip install fastapi uvicorn
+   pip install -r ../requirements.txt
    ```
 
 2. Run the application:
@@ -30,7 +31,13 @@ A super simple FastAPI application that allows students to view and sign up for 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login`                                                     | Start a teacher session                                             |
+| POST   | `/auth/logout`                                                    | End the current teacher session                                     |
+| GET    | `/auth/me`                                                        | Check the current teacher session                                   |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity as a teacher                                |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Remove a registration as a teacher                              |
+
+The demo teacher account is `teacher` with password `teacher123`. Credentials are stored as a salted password hash in `teachers.json`; replace this file and use a secret-management solution before deploying beyond local development. Activity viewing remains public, while signup and unregister require a teacher session.
 
 ## Data Model
 
@@ -47,4 +54,4 @@ The application uses a simple data model with meaningful identifiers:
    - Name
    - Grade level
 
-All data is stored in memory, which means data will be reset when the server restarts.
+Activity and session data is stored in memory, which means it will be reset when the server restarts. Teacher credentials are loaded from `teachers.json` at startup.
