@@ -1,0 +1,7 @@
+{
+  "teacher": {
+    "salt": "e70ded5fb5483074bc2f09c1451a251f",
+    "hash": "0f2d0d3cea0b2a7f3236c99915c330a2a576c8ae5d0e0d2ad0dcd1cd4765a3d3",
+    "iterations": 100000
+  }
+}
